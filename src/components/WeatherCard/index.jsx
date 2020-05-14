@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 import iconsMap from "../../icons_map.json";
-import refreshIcon from "../../assets/refresh.svg";
+import { ReactComponent as RefreshIcon } from "../../assets/refresh.svg";
 
 function WeatherCard({
   temp,
@@ -17,11 +17,9 @@ function WeatherCard({
         <span>Clima atual</span>
         <button onClick={onRefresh}>
           Atualizar
-          <img
-            src={refreshIcon}
-            alt="Atualizar"
-            className={refreshing ? "refreshing" : ""}
-          />
+          <div className={refreshing ? "refreshing" : ""}>
+            <RefreshIcon fill="white" />
+          </div>
         </button>
       </div>
       <div className="content">
