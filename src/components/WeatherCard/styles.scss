@@ -68,10 +68,19 @@
       }
     }
 
-    .icon {
+    .side {
       position: relative;
       margin-left: 32px;
       font-size: 64px;
+      display: flex;
+      flex-direction: column;
+      max-width: 69px;
+
+      span {
+        font-size: 12px;
+        margin-top: 16px;
+        text-align: center;
+      }
     }
   }
 

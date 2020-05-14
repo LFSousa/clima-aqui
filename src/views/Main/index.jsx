@@ -113,7 +113,7 @@ export default class Main extends Component {
                 <LocationInfo city={weather?.name} date={weather.dt} />
                 <WeatherCard
                   {...weather?.main}
-                  weatherId={weather?.weather[0].id}
+                  weather={weather?.weather[0]}
                   onRefresh={() => this.requestData()}
                   refreshing={refreshing}
                 />

@@ -7,7 +7,7 @@ function WeatherCard({
   temp,
   feels_like,
   humidity,
-  weatherId,
+  weather,
   onRefresh,
   refreshing,
 }) {
@@ -28,8 +28,9 @@ function WeatherCard({
           <span>Sensação térmica: {feels_like}º</span>
           <span>Humidade: {humidity}%</span>
         </div>
-        <div className="icon">
-          <i className={`wi wi-${iconsMap[weatherId]}`} />
+        <div className="side">
+          <i className={`wi wi-${iconsMap[weather.id]}`} />
+          <span>{weather.description}</span>
         </div>
       </div>
     </div>
