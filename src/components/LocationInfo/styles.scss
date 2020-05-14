@@ -1,0 +1,13 @@
+.location-info {
+  display: flex;
+  flex-direction: column;
+
+  .city {
+    font-weight: bold;
+    font-size: 38px;
+  }
+
+  .date {
+    font-size: 20px;
+  }
+}
