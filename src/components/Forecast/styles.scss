@@ -1,6 +1,8 @@
 .forecasts {
   display: flex;
-  overflow: auto;
+  overflow-y: visible;
+  overflow-x: auto;
+  min-height: 250px;
 
   .forecast {
     margin-right: 16px;
