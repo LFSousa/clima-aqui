@@ -126,6 +126,7 @@ export default class Main extends Component {
                 backgroundImage: `url(${bgUri})`,
               }}
             />
+            <div className="backdrop" />
           </div>
         )}
       </div>
