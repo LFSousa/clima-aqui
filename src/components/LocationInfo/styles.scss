@@ -1,6 +1,7 @@
 .location-info {
   display: flex;
   flex-direction: column;
+  padding-right: 12px;
 
   .city {
     font-weight: bold;
@@ -9,5 +10,10 @@
 
   .date {
     font-size: 20px;
+  }
+
+  .address {
+    font-size: 14px;
+    font-weight: lighter;
   }
 }

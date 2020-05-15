@@ -58,7 +58,12 @@ export default class Main extends Component {
             if (weatherId === 800) bgUri = backgrounds.clear;
             if (weatherId > 800 && weatherId < 900) bgUri = backgrounds.cloud;
 
-            this.setState({ weather, forecast, bgUri });
+            this.setState({
+              weather,
+              forecast,
+              bgUri,
+              latLng: { lat: latitude, lng: longitude },
+            });
           })
           .catch((e) => {
             console.error("API ERROR", e);
@@ -81,7 +86,15 @@ export default class Main extends Component {
   }
 
   render() {
-    const { weather, forecast, bgUri, refreshing, loading, error } = this.state;
+    const {
+      weather,
+      forecast,
+      bgUri,
+      refreshing,
+      loading,
+      error,
+      latLng,
+    } = this.state;
 
     return loading ? (
       <div className="loading">
@@ -110,7 +123,11 @@ export default class Main extends Component {
           <div>
             <div className="main-container">
               <div className="md-row sm-col">
-                <LocationInfo city={weather?.name} date={weather.dt} />
+                <LocationInfo
+                  city={weather?.name}
+                  date={weather.dt}
+                  latLng={latLng}
+                />
                 <WeatherCard
                   {...weather?.main}
                   weather={weather?.weather[0]}

@@ -4,13 +4,20 @@ const api = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5",
 });
 
+api.interceptors.request.use((req) => {
+  req.params = {
+    ...req.params,
+    appId: process.env.REACT_APP_OPENWEATER_KEY,
+  };
+  return req;
+});
+
 function weatherFromLatLng(lat, lon) {
   return api
     .get("weather", {
       params: {
         lat,
         lon,
-        appId: process.env.REACT_APP_OPENWEATER_KEY,
         lang: "pt_br",
         units: "metric",
       },
@@ -24,7 +31,6 @@ function forecastFromLatLng(lat, lon) {
       params: {
         lat,
         lon,
-        appId: process.env.REACT_APP_OPENWEATER_KEY,
         lang: "pt_br",
         units: "metric",
       },
