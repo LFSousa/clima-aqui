@@ -6,9 +6,11 @@
 
 Acesse o [demo](https://clima-aqui.netlify.app/)
 
-## Configurando o projeto o projeto
+Acesse a [documentação](https://lfsousa.gitbook.io/clima-aqui)
 
-Você pode configurar as chaves de api do Google Maps e OpenWeather dentro do arquivo `.env` ou chame as variáveis de ambiente antes do comando `yarn start`
+## Configurando o projeto
+
+Você pode configurar as chaves de api do Google Maps e OpenWeather dentro do arquivo `.env` ou chamando as variáveis de ambiente antes do comando `yarn start`
 
 ### `.env`
 
