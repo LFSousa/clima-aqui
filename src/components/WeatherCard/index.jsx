@@ -26,7 +26,7 @@ function WeatherCard({
         <div className="weather">
           <span className="temp">{temp}º</span>
           <span>Sensação térmica: {feels_like}º</span>
-          <span>Humidade: {humidity}%</span>
+          <span>Umidade: {humidity}%</span>
         </div>
         <div className="side">
           <i className={`wi wi-${iconsMap[weather.id]}`} />
