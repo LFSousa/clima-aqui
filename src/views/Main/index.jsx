@@ -8,18 +8,7 @@ import WeatherCard from "../../components/WeatherCard";
 import "./styles.scss";
 import Forecast from "../../components/Forecast";
 import ReactLoading from "react-loading";
-
-const backgrounds = {
-  thunderstorm: "https://media.giphy.com/media/j69Ma1PlscvTO/giphy.gif",
-  atmosphere: "https://i.imgur.com/ubvQIxi.gif",
-  snow:
-    "http://bestanimations.com/Nature/winter/winter-snow-nature-animated-gif-11.gif",
-  drizzle:
-    "http://bestanimations.com/Nature/Water/rain/rain-nature-animated-gif-20.gif",
-  rain: "https://media.giphy.com/media/5PjafLZFxMWc/giphy.gif",
-  clear: "https://thumbs.gfycat.com/PlumpBrightArgusfish-size_restricted.gif",
-  cloud: "https://i.imgur.com/bwTjjL4.gif",
-};
+import { selectBackground } from "../../utils/selectBackground";
 
 export default class Main extends Component {
   constructor(props) {
@@ -43,25 +32,10 @@ export default class Main extends Component {
           forecastFromLatLng(latitude, longitude),
         ])
           .then(([weather, forecast]) => {
-            const weatherId = weather.weather[0].id;
-            let bgUri = "";
-
-            // Trata os tipos de clima para pegar a imagem de fundo correspondente
-            if (weatherId >= 200 && weatherId < 300)
-              bgUri = backgrounds.thunderstorm;
-            if (weatherId >= 300 && weatherId < 400)
-              bgUri = backgrounds.drizzle;
-            if (weatherId >= 500 && weatherId < 600) bgUri = backgrounds.rain;
-            if (weatherId >= 600 && weatherId < 700) bgUri = backgrounds.snow;
-            if (weatherId >= 700 && weatherId < 800)
-              bgUri = backgrounds.atmosphere;
-            if (weatherId === 800) bgUri = backgrounds.clear;
-            if (weatherId > 800 && weatherId < 900) bgUri = backgrounds.cloud;
-
             this.setState({
               weather,
               forecast,
-              bgUri,
+              bgUri: selectBackground(weather.weather[0].id),
               latLng: { lat: latitude, lng: longitude },
             });
           })
@@ -97,6 +71,7 @@ export default class Main extends Component {
     } = this.state;
 
     return loading ? (
+      // Tela de carregamento
       <div className="loading">
         {!error ? (
           <>
@@ -118,6 +93,7 @@ export default class Main extends Component {
         )}
       </div>
     ) : (
+      // Tela principal
       <div>
         {!!weather && (
           <div>
